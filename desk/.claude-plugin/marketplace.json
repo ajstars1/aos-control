@@ -1,0 +1,13 @@
+{
+  "name": "aos-desk",
+  "owner": { "name": "ajstars1", "url": "https://github.com/ajstars1" },
+  "metadata": { "description": "aos desk: Linux desktop control for Claude Code", "version": "0.2.0" },
+  "plugins": [
+    {
+      "name": "aos-desk",
+      "description": "Hyprland desktop control (MCP server) plus the desk skill.",
+      "source": "./",
+      "skills": ["./skills/desk"]
+    }
+  ]
+}

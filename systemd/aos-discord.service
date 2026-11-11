@@ -1,0 +1,18 @@
+# Template: install.sh fills in the @...@ values and writes the result to ~/.config/systemd/user/.
+[Unit]
+Description=aos phone agent: Claude Code session listening to Discord (tmux session aos-discord)
+After=graphical-session.target
+
+[Service]
+Type=forking
+WorkingDirectory=@WORKDIR@
+Environment=PATH=@PATH@
+Environment=DISPLAY=@DISPLAY@
+Environment=WAYLAND_DISPLAY=@WAYLAND_DISPLAY@
+ExecStart=@TMUX@ new-session -d -s aos-discord @REPO@/systemd/discord-agent.sh
+ExecStop=@TMUX@ kill-session -t aos-discord
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target

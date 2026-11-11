@@ -1,0 +1,38 @@
+{
+  "name": "aos-desk",
+  "version": "0.2.0",
+  "description": "Drive a Hyprland (Wayland) Linux desktop from Claude: windows via hyprctl, kitty terminals via remote control, then screenshot, click and type. Plus a skill with the observe, act, verify loop and when to stop and ask. Also agentdesk: a separate headless desktop (cage + wayvnc) where agents can use Chrome or kitty without touching the real screen.",
+  "author": {
+    "name": "ajstars1",
+    "url": "https://github.com/ajstars1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "computer-use",
+    "linux",
+    "hyprland",
+    "wayland",
+    "kitty",
+    "mcp"
+  ],
+  "mcpServers": {
+    "desk": {
+      "command": "uv",
+      "args": [
+        "run",
+        "-q",
+        "--script",
+        "${CLAUDE_PLUGIN_ROOT}/server.py"
+      ]
+    },
+    "agentdesk": {
+      "command": "uv",
+      "args": [
+        "run",
+        "-q",
+        "--script",
+        "${CLAUDE_PLUGIN_ROOT}/agent_desk_server.py"
+      ]
+    }
+  }
+}

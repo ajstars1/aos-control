@@ -1,0 +1,22 @@
+# Template: install.sh --agent-desk fills in the @...@ values and writes the result to ~/.config/systemd/user/.
+[Unit]
+Description=aos agent desktop: headless cage + Chrome for Claude agents (input broker on 127.0.0.1:5910, view-only VNC on :5911)
+Documentation=file://@REPO@/desk/agent_desk_server.py
+After=default.target
+
+[Service]
+Type=simple
+Environment=PATH=@PATH@
+ExecStart=@UV@ run -q --script @REPO@/desk/agent_desk_server.py --serve chrome
+# serve() stops cage, both wayvnc and the broker itself on SIGTERM; anything left gets SIGKILL after the timeout.
+KillMode=mixed
+TimeoutStopSec=20
+# Exit 1 = the app or wayvnc died on its own; exit 0 = stopped on purpose (agent_desk_stop or systemctl stop).
+Restart=on-failure
+RestartSec=10
+Nice=5
+MemoryHigh=2G
+MemoryMax=3G
+
+[Install]
+WantedBy=default.target

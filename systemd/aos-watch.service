@@ -1,0 +1,14 @@
+# Template: install.sh fills in the @...@ values and writes the result to ~/.config/systemd/user/.
+[Unit]
+Description=aos-watch: plain-logic watchdog for the Discord agent (relays stuck permission prompts, restarts it if it dies)
+After=aos-discord.service
+
+[Service]
+WorkingDirectory=@REPO@
+Environment=PATH=@PATH@
+ExecStart=@BUN@ watchdog/aos-watch.ts
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=default.target

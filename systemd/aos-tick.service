@@ -1,0 +1,12 @@
+# Template: install.sh fills in the @...@ values and writes the result to ~/.config/systemd/user/.
+[Unit]
+Description=aos runner tick: ping overdue tasks, start Claude on due auto tasks
+
+[Service]
+Type=oneshot
+WorkingDirectory=@REPO@
+Environment=PATH=@PATH@
+Environment=DISPLAY=@DISPLAY@
+Environment=WAYLAND_DISPLAY=@WAYLAND_DISPLAY@
+ExecStart=@BUN@ runner/tick.ts
+TimeoutStartSec=30min

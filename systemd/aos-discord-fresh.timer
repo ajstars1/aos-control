@@ -1,0 +1,10 @@
+# Template: install.sh writes it to ~/.config/systemd/user/.
+[Unit]
+Description=aos phone agent: fresh conversation every day at 04:00 (this machine's time zone)
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+Persistent=false
+
+[Install]
+WantedBy=timers.target

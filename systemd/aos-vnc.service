@@ -1,0 +1,13 @@
+# Template: install.sh fills in the @...@ values and writes the result to ~/.config/systemd/user/.
+[Unit]
+Description=aos remote desktop: wayvnc on the Tailscale IP only (phone VNC app over Tailscale)
+After=graphical-session.target
+
+[Service]
+Environment=PATH=@PATH@
+ExecStart=@REPO@/systemd/vnc.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

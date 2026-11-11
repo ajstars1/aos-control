@@ -1,0 +1,9 @@
+# Template: install.sh writes it to ~/.config/systemd/user/ (%h is your home folder).
+[Unit]
+Description=aos phone agent: start a fresh conversation (daily)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mkdir -p %h/.cache/aos
+ExecStart=/usr/bin/touch %h/.cache/aos/discord-fresh
+ExecStart=/usr/bin/systemctl --user restart aos-discord

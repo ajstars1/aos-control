@@ -1,0 +1,8 @@
+[
+  { "key": "work", "name": "Work", "blurb": "Projects and clients" },
+  { "key": "side-project", "name": "Side project", "blurb": "The thing you build at night" },
+  { "key": "job-search", "name": "Job search", "blurb": "Applications and follow-ups" },
+  { "key": "personal", "name": "Personal", "blurb": "Life admin" },
+  { "key": "general", "name": "General", "blurb": "Everything else" },
+  { "key": "archive", "name": "Archive", "blurb": "Old work, listed only when it has tasks", "hidden": true }
+]
